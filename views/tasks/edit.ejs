@@ -1,0 +1,28 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+    <h1>Edit <%=task.title%> Task</h1>
+    <form action="/tasks/<%=task._id%>?_method=PUT" method="post">
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required value="<%=task.title%>">
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" value="<%=task.description%>" required></textarea>
+        </div>
+        <div>
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <% if(task.status=== "complete"){ %>
+                <option value="pending">Pending</option>
+                <option value="complete" selected>Complete</option>
+                <% }else{ %>
+                <option value="complete">Complete</option>
+                <option value="pending" selected>Pending</option>
+                <%} %>
+            </select>
+        </div>
+        <button type="submit">Edit Task</button>
+    </form>
+</body>
+</html>

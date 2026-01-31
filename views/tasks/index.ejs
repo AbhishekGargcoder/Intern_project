@@ -1,0 +1,22 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+   <h1>My Tasks</h1>
+        <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1 "></div>
+         <% tasks.forEach(function(task) { %>
+              <div class="col mb-4">
+                <strong><%= task.title %></strong> - <%= task.description %>
+                <% if (task.status === "complete") { %>
+                     <em>(Completed)</em>
+                <% } else { %>
+                     <em>(Pending)</em>
+                <% } %>
+                <a href="/tasks/<%= task._id %>/edit">Edit</a>
+                </div>
+         <% }); %>
+        </div>
+    <form action="/tasks/new" method="get">
+        <button type="submit">Add New Task</button>
+    </form>
+  
+</body>
+</html>
